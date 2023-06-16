@@ -1,4 +1,4 @@
+// initializing the db (?)
 const Sequelize = require("sequelize");
-const db = new Sequelize("postgres://localhost:5432/study-saturdays");
+export default new Sequelize("postgres://localhost:5432/study-saturdays");
 // TODO: change the db string
-module.exports = db;
