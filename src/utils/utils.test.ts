@@ -2,6 +2,7 @@
 import { describe, expect, it, vi } from "vitest";
 
 import User from "../../db/models/user";
+import { FastifyRequest } from "fastify";
 
 // const User = require("../../db/models/user");
 
