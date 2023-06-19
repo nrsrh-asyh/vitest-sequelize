@@ -2,7 +2,7 @@
   "name": "vitest-sequelize",
   "version": "1.0.0",
   "description": "Demo repo for using Vitest with Sequelize",
-  "main": "index.js",
+  "main": "app.ts",
   "scripts": {
     "test": "vitest"
   },
