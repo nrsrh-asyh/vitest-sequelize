@@ -1,7 +1,7 @@
 // defining admin model
 const Sequelize = require("sequelize");
 import db from "../db";
-const User = require("./user");
+import { User } from "./user";
 
 const Admin = db.define("admin", {
   firstName: {

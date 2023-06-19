@@ -2,7 +2,7 @@
 const Sequelize = require("sequelize");
 import db from "../db";
 
-const User = db.define("user", {
+export const User = db.define("user", {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -24,5 +24,3 @@ User.beforeCreate((user) => {
   user.firstName = nameFirst[0].toUpperCase() + nameFirst.slice(1);
   user.lastName = nameLast[0].toUpperCase() + nameLast.slice(1);
 });
-
-module.exports = User;
