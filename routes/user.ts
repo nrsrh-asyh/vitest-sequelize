@@ -1,18 +1,16 @@
-// defining user route
-import Fastify from "fastify";
+// defining admin route
+import { FastifyPluginAsync } from "fastify";
 import { User } from "../db/models/user";
 
-const fastify = Fastify({
-  logger: true,
-});
+const userRouter: FastifyPluginAsync = async (fastify) => {
+  fastify.get("/", async (req, rep) => {
+    try {
+      const users = await User.findAll();
+      rep.send(users);
+    } catch (e) {
+      rep.send(e);
+    }
+  });
+};
 
-fastify.get("/", async (req, res) => {
-  try {
-    const users = await User.findAll();
-    res.send(users);
-  } catch (e) {
-    res.send(e);
-  }
-});
-
-module.exports = fastify;
+export default userRouter;

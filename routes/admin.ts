@@ -1,18 +1,16 @@
 // defining admin route
-import Fastify from "fastify";
+import { FastifyPluginAsync } from "fastify";
 import { Admin } from "../db/models/admin";
 
-const fastify = Fastify({
-  logger: true,
-});
+const adminRouter: FastifyPluginAsync = async (fastify) => {
+  fastify.get("/", async (req, rep) => {
+    try {
+      const admins = await Admin.findAll();
+      rep.send(admins);
+    } catch (e) {
+      rep.send(e);
+    }
+  });
+};
 
-fastify.get("/", async (req, res) => {
-  try {
-    const admins = await Admin.findAll();
-    res.send(admins);
-  } catch (e) {
-    res.send(e);
-  }
-});
-
-module.exports = fastify;
+export default adminRouter;
