@@ -1,15 +1,22 @@
-const server = require("./app")({
-  logger: {
-    level: "info",
-    transport: {
-      target: "pino-pretty",
-    },
-  },
+// where we start the server
+import Fastify from "fastify";
+import adminRouter from "../routes/admin";
+import userRouter from "../routes/user";
+
+const fastify = Fastify({
+  logger: true,
 });
 
-server.listen({ port: 5432 }, (err, address) => {
-  if (err) {
-    server.log.error(err);
+fastify.register(adminRouter);
+fastify.register(userRouter);
+
+const start = async () => {
+  try {
+    await fastify.listen({ port: 5432 });
+  } catch (err) {
+    fastify.log.error(err);
     process.exit(1);
   }
-});
+};
+
+start();

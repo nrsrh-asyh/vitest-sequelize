@@ -1,4 +1,4 @@
-// defining admin route
+// defining user route
 import { FastifyPluginAsync } from "fastify";
 import { User } from "../db/models/user";
 
