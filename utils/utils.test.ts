@@ -1,5 +1,5 @@
 // tests for the functions go here
-import { describe, expect, it, test, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { Admin } from "../db/models/admin";
 import { User } from "../db/models/user";
 import { adminFunc, userFunc } from "./utils";
