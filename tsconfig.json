@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["es6"]
+    "target": "ES6", // or a more recent ecmascript version
+    "moduleResolution": "node",
+    "lib": ["es6"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }

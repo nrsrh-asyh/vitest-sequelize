@@ -1,5 +1,4 @@
-// where we start the server i think (?)
-// ---------------------------------------------
+// where we start the server
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -27,8 +26,8 @@ const init = async () => {
     //will only run when run with npm start and not with npm test to avoid db syncing in multiple threads when running admin
     try {
       await db.sync();
-      app.listen(3000, () => {
-        console.log("Server is listening on port 3000!");
+      app.listen(5432, () => {
+        console.log("Server is listening on port 5432!");
       });
     } catch (err) {
       console.error(err);

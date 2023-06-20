@@ -1,19 +1,24 @@
 // defining admin model
-const Sequelize = require("sequelize");
-import db from "../db";
+import { Table, Column, Model, BelongsTo } from "sequelize-typescript";
 import { User } from "./user";
 
-const Admin = db.define("admin", {
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-});
+type AdminAttr = {
+  id: number;
+  firstName: string;
+  lastName: string;
+};
 
-Admin.belongsTo(User, { as: "user" });
+@Table({ tableName: "Admin" })
+export class Admin extends Model<AdminAttr> {
+  @Column({ allowNull: false })
+  id: number;
 
-module.exports = Admin;
+  @Column({ allowNull: false })
+  firstName: string;
+
+  @Column({ allowNull: false })
+  lastName: string;
+
+  @BelongsTo(() => User)
+  users?: User[];
+}

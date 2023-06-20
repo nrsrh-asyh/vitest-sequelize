@@ -1,5 +1,5 @@
 import { router } from "express";
-const Admin = require("../db/models/Admin");
+import { Admin } from "../db/models/admin";
 
 router.get("/", async (req, res, next) => {
   try {
@@ -37,7 +37,6 @@ router.put("/:id", async (req, res, next) => {
     let updateAdminInfo = await Admin.update(req.body, {
       where: { id: req.params.id },
       returning: true,
-      plain: true,
     });
     res.send(updateAdminInfo[1]);
   } catch (err) {
